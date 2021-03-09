@@ -1,4 +1,4 @@
-FROM python:3.7.10-slim-stretch as Python
+FROM python:3.7.4-slim-stretch as Python
 
 COPY requirements.txt .
 
@@ -6,10 +6,10 @@ COPY requirements.txt .
 RUN apt-get update
 RUN pip install -r requirements.txt
 
-#theme
-RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && apt-get install -y nodejs
+# nodejs (optional)
+# RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && apt-get install -y nodejs
 
-FROM python:3.7.10-slim-stretch
+FROM python:3.7.4-slim-stretch
 
 COPY --from=Python /root/.cache /root/.cache
 COPY --from=Python requirements.txt .
@@ -20,7 +20,7 @@ RUN rm -rf /root/.cache
 RUN rm -rf /var/lib/apt/lists/*
 
 RUN mkdir app
-WORKDIR app
+WORKDIR /app
 
 COPY ./ /app/
 
