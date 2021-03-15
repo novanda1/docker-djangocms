@@ -7,7 +7,7 @@ RUN apt-get update
 RUN pip install -r requirements.txt
 
 # nodejs (optional)
-# RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && apt-get install -y nodejs
+# RUN apt-get update && apt-get install curl && curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && apt-get install -y nodejs
 
 FROM python:3.7.4-slim-stretch
 
