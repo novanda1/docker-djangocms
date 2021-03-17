@@ -7,7 +7,11 @@ RUN apt-get update
 RUN pip install -r requirements.txt
 
 # nodejs (optional)
-# RUN apt-get update && apt-get install curl && curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && apt-get install -y nodejs
+# RUN apt-get update && apt-get install curl -y
+# RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
+# RUN apt-get install nodejs npm -y
+# if we need yarn
+# RUN npm install yarn -g
 
 FROM python:3.7.4-slim-stretch
 
